@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Grid} from '@material-ui/core';
 import Detail from "./Components/Details/Detail"
+import Main from "./Components/Main/Main"
 import useStyles from './styles';
 export default function App(){
     const classes=useStyles();
@@ -11,8 +12,8 @@ export default function App(){
                 <Grid items xm={12} sm={4}>
                     <Detail title="Income"/>
                 </Grid>
-                <Grid items xm={12} sm={4}>
-                     Main
+                <Grid items xm={12} sm={3}>
+                     <Main/>
                 </Grid>
                 <Grid items xm={12} sm={4}>
                     <Detail title="Expense"/>
