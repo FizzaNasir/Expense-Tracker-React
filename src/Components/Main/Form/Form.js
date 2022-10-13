@@ -5,13 +5,14 @@ import { bindActionCreators } from 'redux'
 import * as  actionCreators  from '../../../State/ActionCreators/index';
 import {TextField, Typography, MenuItem, FormControl, Button, InputLabel, Select, Grid} from '@material-ui/core';
 import useStyles from './FormStyles';
+import { incomeCategories, expenseCategories } from '../../../Constants/categories';
 // import { addTransaction } from '../../../State/ActionCreators';
 import {v4 as uuidv4} from 'uuid';
 export default function Form(){ 
     const InitialState=({
         amount: '',
         category: '',
-        type:'',
+        type:'Income',
         date:new Date()
     })
     const classes= useStyles();  //cz makestyles returns a hook. you can use any other name instead of useStyles
@@ -23,7 +24,7 @@ export default function Form(){
         addTransaction(transaction);
         setFormData(InitialState);
     }
-
+    let seletedCategory=FormData.type==='Income'? incomeCategories: expenseCategories;
     return(
         <div>
             <Grid container spacing={2}>
@@ -34,8 +35,8 @@ export default function Form(){
                     <FormControl fullWidth>
                         <InputLabel>Type</InputLabel>
                         <Select value={FormData.type} onChange={(e)=>setFormData({...FormData, type: e.target.value})}>
-                            <MenuItem value='Income'>Income</MenuItem>
-                            <MenuItem value='Expense'>Expense</MenuItem>
+                        <MenuItem value='Income'>Income</MenuItem>
+                        <MenuItem value='Expense'>Expense</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
@@ -44,8 +45,10 @@ export default function Form(){
                     <FormControl fullWidth>
                         <InputLabel>Category</InputLabel>
                         <Select value={FormData.category} onChange={(e)=>setFormData({...FormData, category: e.target.value})}>
-                            <MenuItem value='business'>Business</MenuItem>
-                            <MenuItem value='salary'>Salary</MenuItem>
+                        {seletedCategory.map((c)=>
+                                <MenuItem key={c.type} value={c.type}>{c.type}</MenuItem>
+                            )}
+                           
                         </Select>
                     </FormControl>
                 </Grid>
