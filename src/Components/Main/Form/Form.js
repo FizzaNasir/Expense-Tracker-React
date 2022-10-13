@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
+// import formatDate from 'util'
 import * as  actionCreators  from '../../../State/ActionCreators/index';
 import {TextField, Typography, MenuItem, FormControl, Button, InputLabel, Select, Grid} from '@material-ui/core';
 import useStyles from './FormStyles';
@@ -8,7 +9,7 @@ import useStyles from './FormStyles';
 import {v4 as uuidv4} from 'uuid';
 export default function Form(){ 
     const InitialState=({
-        amount: 0,
+        amount: '',
         category: '',
         type:'',
         date:new Date()
@@ -33,8 +34,8 @@ export default function Form(){
                     <FormControl fullWidth>
                         <InputLabel>Type</InputLabel>
                         <Select value={FormData.type} onChange={(e)=>setFormData({...FormData, type: e.target.value})}>
-                            <MenuItem value='income'>Income</MenuItem>
-                            <MenuItem value='expense'>Expense</MenuItem>
+                            <MenuItem value='Income'>Income</MenuItem>
+                            <MenuItem value='Expense'>Expense</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
@@ -50,11 +51,11 @@ export default function Form(){
                 </Grid>
 
                 <Grid item xs={6}>
-                    <TextField type='number' label='Amount' value={FormData.amount} onChange={(e)=>({...FormData, amount: e.target.value})} fullWidth/>
+                    <TextField type='number' label='Amount' value={FormData.amount} onChange={(e)=>setFormData({...FormData, amount: e.target.value})} fullWidth/>
                 </Grid>
 
                 <Grid item xs={6}>
-                    <TextField type='date' label='Date'  value={FormData.date} onChange={(e)=>({...FormData, date: e.target.value})} fullWidth/>
+                    <TextField type='date' label='Date'  value={FormData.date} onChange={(e)=>setFormData({...FormData, date: e.target.value})} fullWidth/>
                 </Grid>       
                     <Button className={classes.button} variant='outlined' color='primary' onClick={CreateTransaction} fullwidth>Create</Button>
           </Grid>

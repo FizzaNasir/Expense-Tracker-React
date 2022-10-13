@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Grid} from '@material-ui/core';
 import Detail from "./Components/Details/Detail"
 import Main from "./Components/Main/Main"

@@ -8,7 +8,7 @@ export default function Main(){ //we can also destructure the prop({title})
     return(
         <div>
             <Card className={classes.root}>
-                <CardHeader title="Expense Tracker" subheader="Powered By speechly"/>
+                <CardHeader title="Expensehhehe Tracker" subheader="Powered By speechly"/>
                 <CardContent>
                     <Typography align="center" variant="h5">Total balance is 100$</Typography>
                     <Typography variant="subtitle1" style={{lineHeight: '1.5rem', marginTop: '20px'}}>Try saying: Add income for 100$ in category salary</Typography>
