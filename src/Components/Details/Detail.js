@@ -13,7 +13,7 @@ export default function Detail(props){ //we can also destructure the prop({title
                 <CardHeader title={props.title}/>
                 <CardContent>
                     <Typography>${total}</Typography>
-                    <Doughnut data={chartData}/>
+                    <Doughnut className={classes.chart} data={chartData}/>
                 </CardContent>
             </Card>
         </div>
