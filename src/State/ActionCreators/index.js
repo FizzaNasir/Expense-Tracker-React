@@ -13,3 +13,11 @@ export const deleteTransaction=(id)=>{
                     payload: id
             })
     }}
+
+// export const balance=()=>{
+//     return(dispatch)=>{
+//             dispatch({
+//                     type:'BALANCE'
+//             })
+//         }
+// }
